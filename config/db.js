@@ -15,3 +15,5 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
+// Modified for: docs: document backend architecture connection guide

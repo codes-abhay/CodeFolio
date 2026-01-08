@@ -82,3 +82,5 @@ router.post(
 );
 
 module.exports = router;
+
+// Modified for: feat: add bcrypt password hashing on register

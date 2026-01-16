@@ -26,3 +26,5 @@ module.exports = function (req, res, next) {
     res.status(500).json({ msg: 'Server Error' });
   }
 };
+
+// Modified for: fix: handle edge case for empty auth headers

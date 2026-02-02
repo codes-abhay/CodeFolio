@@ -304,3 +304,5 @@ router.get('/github/:username', async (req, res) => {
 module.exports = router;
 
 // Modified for: feat: add experience array updates routes
+
+// Modified for: feat: add education array updates routes

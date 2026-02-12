@@ -310,3 +310,5 @@ module.exports = router;
 // Modified for: feat: integrate GitHub REST API for developer repos
 
 // Modified for: fix: mitigate github rate-limiting with token headers
+
+// Modified for: refactor: optimize profile retrieval db queries

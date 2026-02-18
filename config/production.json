@@ -1,5 +1,1 @@
-{
-    "mongoURI": "MONGO_URI",
-    "jwtSecret": "JWT_SECRET",
-    "githubToken": "GITHUB_TOKEN"
-}
+{}

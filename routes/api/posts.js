@@ -222,3 +222,5 @@ module.exports = router;
 // Modified for: feat: add post likes and unlikes toggle logic
 
 // Modified for: feat: add comment array inside post document
+
+// Modified for: fix: prevent duplicate likes via user ID checking

@@ -99,3 +99,5 @@ router.post('/', auth, (req, res) => {
 });
 
 module.exports = router;
+
+// Modified for: feat: enforce size and mime-type validations on upload

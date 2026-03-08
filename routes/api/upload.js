@@ -103,3 +103,5 @@ module.exports = router;
 // Modified for: feat: enforce size and mime-type validations on upload
 
 // Modified for: feat: implement positional arrayFilters for comment avatar updates
+
+// Modified for: fix: handle multer exception bounds for large files

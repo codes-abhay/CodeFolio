@@ -37,3 +37,5 @@ store.subscribe(() => {
 });
 
 export default store;
+
+// Modified for: feat: implement Redux authentication states & user loading

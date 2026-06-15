@@ -41,5 +41,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Landing);
-
-// Modified for: style: add interactive wiggling vector grid on landing page

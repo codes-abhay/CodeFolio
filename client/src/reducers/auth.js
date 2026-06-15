@@ -51,5 +51,3 @@ function authReducer(state = initialState, action) {
 }
 
 export default authReducer;
-
-// Modified for: fix: resolve console warnings on redux state mutations

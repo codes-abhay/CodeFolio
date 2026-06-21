@@ -85,7 +85,7 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 
     // Check user
     if (post.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
+      return res.status(403).json({ msg: 'User not authorized' });
     }
 
     await post.deleteOne();
@@ -201,7 +201,7 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
     }
     // Check user
     if (comment.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
+      return res.status(403).json({ msg: 'User not authorized' });
     }
 
     post.comments = post.comments.filter(

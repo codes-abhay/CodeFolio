@@ -2,14 +2,20 @@ const express = require('express');
 require('dotenv').config();
 const connectDB = require('./config/db');
 const path = require('path');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 
 // Connect Database
 connectDB();
 
+// Security Headers
+app.use(helmet());
+
 // Init Middleware
 app.use(express.json());
+app.use(mongoSanitize());
 app.use('/uploads', express.static('uploads'));
 
 // Define Routes

@@ -5,8 +5,17 @@ const auth = require('../../middleware/auth');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
+const rateLimit = require('express-rate-limit');
 
 const User = require('../../models/User');
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15-minute window
+  max: 10,                   // 10 attempts per window per IP
+  standardHeaders: true,     // Return rate limit info in RateLimit-* headers
+  legacyHeaders: false,      // Disable X-RateLimit-* legacy headers
+  message: { errors: [{ msg: 'Too many login attempts, please try again after 15 minutes' }] }
+});
 
 // @route    GET api/auth
 // @desc     Get user by token
@@ -26,6 +35,7 @@ router.get('/', auth, async (req, res) => {
 // @access   Public
 router.post(
   '/',
+  loginLimiter,
   check('email', 'Please include a valid email').isEmail(),
   check('password', 'Password is required').exists(),
   async (req, res) => {

@@ -110,6 +110,8 @@ const ProfileSchema = new mongoose.Schema({
   }
 });
 
-ProfileSchema.index({ skills: 1, company: 1, location: 1 });
+ProfileSchema.index({ skills: 1 });
+ProfileSchema.index({ company: 1 });
+ProfileSchema.index({ location: 1 });
 
 module.exports = mongoose.model('profile', ProfileSchema);

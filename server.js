@@ -11,7 +11,14 @@ const app = express();
 connectDB();
 
 // Security Headers
-app.use(helmet());
+// contentSecurityPolicy is disabled because Helmet's default CSP blocks React's
+// inline <script> tags in the production build (create-react-app injects them).
+// All other Helmet protections remain active: X-Frame-Options, HSTS, nosniff, etc.
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 // Init Middleware
 app.use(express.json());

@@ -98,7 +98,7 @@ export const uploadAvatar = (file) => async (dispatch) => {
       }
     };
 
-    const res = await api.post('/upload', formData, config);
+    await api.post('/upload', formData, config);
 
     dispatch(loadUser());
     dispatch(setAlert('Avatar Updated', 'success'));

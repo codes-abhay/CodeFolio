@@ -7,6 +7,9 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 const app = express();
 
+// Trust proxy (required for express-rate-limit if behind a proxy like Webpack dev proxy or Heroku)
+app.set('trust proxy', 1);
+
 // Connect Database
 connectDB();
 

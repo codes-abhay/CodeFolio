@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -6,9 +6,27 @@ import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
+
+  const filteredProfiles = useMemo(() => {
+    console.log('Calculating filtered profiles list...');
+    if (!searchQuery) return profiles;
+    return profiles.filter((profile) => {
+      const nameMatch =
+        profile.user &&
+        profile.user.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const skillMatch =
+        profile.skills &&
+        profile.skills.some((skill) =>
+          skill.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      return nameMatch || skillMatch;
+    });
+  }, [profiles, searchQuery]);
 
   return (
     <section className="container">
@@ -25,7 +43,8 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             <input
               type="text"
               placeholder="Search by name or skill..."
-              onChange={(e) => getProfiles(e.target.value)}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="form-control"
               style={{
                 width: '100%',
@@ -36,8 +55,8 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             />
           </div>
           <div className="profiles">
-            {profiles.length > 0 ? (
-              profiles.map((profile) => (
+            {filteredProfiles.length > 0 ? (
+              filteredProfiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (

@@ -2,8 +2,6 @@
 
 **CodeFolio** is a comprehensive professional networking platform designed specifically for developers. It enables users to build standout portfolios, showcase their GitHub repositories, share insights through posts, and connect with a global community of elite engineers.
 
-![CodeFolio Banner](https://via.placeholder.com/1000x300?text=CodeFolio+Developer+Network)
-
 ##  Key Features
 
 -   **Professional Developer Portfolios**: Create a detailed profile including skills, experience, and education.
